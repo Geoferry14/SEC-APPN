@@ -1,0 +1,25 @@
+credentials:
+  usernames:
+    admin1:
+      email: admin@example.com
+      name: Admin User
+      password: 'gerydf' #'260000$abc123$3dbbc3e78fd5cf3dfb33b4e8cfb85ac474e6b14fd58c69d1c7ed2f05b8c4b5c8'  # hash for 'adminpass'
+      roles:
+        - admin
+    eng1:
+      email: eng1@example.com
+      name: Engineer User
+      password: 'pass' #'260000$abc456$1a7d4f91ee60a566b73920f282e30d315203d28e417d087ac9e118d7f7b16f64'  # hash for 'engpass'
+      roles:
+        - engineer
+    analyst1:
+      email: analyst@example.com
+      name: Analyst User
+      password: '260000$abc789$be4a5978d39891f9941297e77d2a1e64a406be6453a3ac19169db597c0c84ad6'  # hash for 'analystpass'
+      roles:
+        - analyst
+
+cookie:
+  expiry_days: 7
+  key: some_secure_cookie_key
+  name: streamlit_app_auth
