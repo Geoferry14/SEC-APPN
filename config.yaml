@@ -3,19 +3,19 @@ credentials:
     admin1:
       email: admin@example.com
       name: Admin User
-      password: '260000$abc123$3dbbc3e78fd5cf3dfb33b4e8cfb85ac474e6b14fd58c69d1c7ed2f05b8c4b5c8'  # hash for 'adminpass'
+      password: '$2b$12$Q7mtbHaK605TF.pv67TvH.XBWVJEqU1MRFs8JKaSDrGAK3ChRmXvS'
       roles:
         - admin
     eng1:
       email: eng1@example.com
       name: Engineer User
-      password: '260000$abc456$1a7d4f91ee60a566b73920f282e30d315203d28e417d087ac9e118d7f7b16f64'  # hash for 'engpass'
+      password: '$2b$12$upW00B3FXeQG2z40Q4t68.IrUPFChE3hd.oKVdV0MwK/49gmDQxDW'
       roles:
         - engineer
     analyst1:
       email: analyst@example.com
       name: Analyst User
-      password:  '260000$abc789$be4a5978d39891f9941297e77d2a1e64a406be6453a3ac19169db597c0c84ad6'  # hash for 'analystpass'
+      password: '$2b$12$MQ1Eq26BMQ1SBjzoyKc6S.zqZ/0/EoXRDYkSW12RgDYK3twtd93su'
       roles:
         - analyst
 
