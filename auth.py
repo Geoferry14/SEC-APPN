@@ -21,8 +21,7 @@ def load_config():
 def login():
     config = load_config()
     if config is None:
-        return None, None, None
-
+       return None, None, None
     authenticator = stauth.Authenticate(
         credentials=config["credentials"],
         cookie_name=config["cookie"]["name"],
@@ -30,29 +29,22 @@ def login():
         cookie_expiry_days=config["cookie"]["expiry_days"]
     )
 
-    result = authenticator.login(
-        'main',
-        fields={'Form name': 'My Login Form'},
-        key='login-button'
+    name, auth_status, username = authenticator.login(
+        "main",
+        fields={"Form name": "My Login Form"},
+        key="login-button",
     )
 
-    # 🔐 Check if login returned None
-    if result is None:
+    if name is None and auth_status is None and username is None:
         return None, None, None
 
-    name, auth_status, username = result
-    return name, auth_status, username
-    
-    name, auth_status, username = authenticator.login('main', fields={'Form name': 'My Login Form'}, key='login-button')
-   
-
-
     if auth_status:
-        role = config["credentials"]["usernames"][username]["roles"][0]
+        roles = config["credentials"]["usernames"][username]["roles"]
+        st.session_state["roles"] = roles
         authenticator.logout("Logout", "sidebar")
-        return name, auth_status, username, role
     elif auth_status is False:
         st.error("Incorrect username or password.")
-    elif auth_status is None:
+    else:
         st.warning("Please enter your username and password.")
-    return None, auth_status, None, None
+
+    return name, auth_status, username

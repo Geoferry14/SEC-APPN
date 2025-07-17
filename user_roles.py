@@ -1,7 +1,12 @@
+# user_roles.py
 import streamlit as st
 
 def check_user_role(role):
-    if role == "Analyst":
-        st.info("🔐 Analyst Mode: You can analyze encrypted data but cannot see or modify raw patient data.")
-    elif role == "Admin":
-        st.success("✅ Admin Mode: Full access to data and patient management.")
+    if role == "admin":
+        st.sidebar.markdown("**Role:** Admin")
+    elif role == "engineer":
+        st.sidebar.markdown("**Role:** Engineer")
+    elif role == "analyst":
+        st.sidebar.markdown("**Role:** Analyst")
+    else:
+        st.warning("Unrecognized role. Access may be restricted.")

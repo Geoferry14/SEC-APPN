@@ -5,7 +5,7 @@ import numpy as np
 from phe import paillier
 from yaml import safe_load
 import streamlit_authenticator as stauth
-from encryption_utils import encrypt_column, decrypt_column
+from encryption_utils import encrypt_column, decrypt_column, public_key
 from model_utils import load_data, train_model, predict_encrypted
 from user_roles import check_user_role
 from auth import login
@@ -18,13 +18,12 @@ if None in (name, auth_status, username):
     st.warning("Login failed or config issue.")
     st.stop()
 
-
-
 # 🧑‍💼 Get role from session_state (new API)
 role_list = st.session_state.get("roles", [])
 role = role_list[0] if role_list else "unknown"
 
 st.sidebar.success(f"Logged in as {name} ({role})")
+check_user_role(role)
 
 # ----------------------------
 # 📁 Navigation
@@ -66,7 +65,7 @@ elif page == "Analyst Workspace" and role == "analyst":
     X = df.iloc[:, :-1].values
     new_patient = X[1]
     encrypted_input = encrypt_column(new_patient)
-    encrypted_result = predict_encrypted(encrypted_input, model)
+    encrypted_result = predict_encrypted(encrypted_input, model, public_key)
     prediction = decrypt_column([encrypted_result])[0]
     st.success(f"Encrypted prediction: {prediction:.2f}")
 

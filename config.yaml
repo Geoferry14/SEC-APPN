@@ -20,6 +20,6 @@ credentials:
         - analyst
 
 cookie:
-  expiry_days: 7
+  expiry_days: 15
   key: some_secure_cookie_key
   name: streamlit_app_auth
